@@ -1,0 +1,85 @@
+! Startup-config last modified at Wed Jul  9 14:15:44 2025 by admin
+! device: ny-r1 (cEOSLab, EOS-4.28.13.1M-41622611.428131M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$Bk4t/W8eE8IBPZzu$hk2bCUusYZp8hZoNEoP8yt5GdOL1JYnO8U//9CsYfXk481tmzOPGCg49bJRu7ARGqrB36eR6Lo6eF/hi6LpdR/
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname ny-r1
+!
+spanning-tree mode mstp
+!
+vrf instance def
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+   no switchport
+   ip address 10.100.0.2/30
+!
+interface Ethernet2
+   no switchport
+   ip address 10.100.0.10/30
+!
+interface Ethernet3
+!
+interface Ethernet4
+   no switchport
+   ip address 10.2.0.1/26
+!
+interface Ethernet5
+   no switchport
+   ip address 10.2.1.1/26
+!
+interface Ethernet6
+!
+interface Loopback1
+   ip address 10.2.255.1/32
+!
+interface Management0
+   ip address 172.20.20.21/24
+   ipv6 address 3fff:172:20:20::8/64
+!
+ip routing
+ip routing vrf def
+!
+ip route 10.2.3.0/26 10.2.255.3
+ip route 10.2.255.2/32 10.2.0.2
+ip route 10.2.255.3/32 10.2.1.2
+ip route vrf def 0.0.0.0/0 172.20.20.1
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+router bgp 65002
+   neighbor 10.1.255.1 remote-as 65001
+   neighbor 10.1.255.1 update-source Loopback1
+   neighbor 10.1.255.1 description BUD-R1-LOOPBACK
+   neighbor 10.1.255.1 ebgp-multihop 2
+   neighbor 10.2.255.2 remote-as 65002
+   neighbor 10.2.255.2 update-source Loopback1
+   neighbor 10.2.255.2 description NY-R2-LOOPBACK
+   neighbor 10.2.255.2 route-reflector-client
+   neighbor 10.2.255.3 remote-as 65002
+   neighbor 10.2.255.3 update-source Loopback1
+   neighbor 10.2.255.3 description NY-R3-LOOPBACK
+   neighbor 10.2.255.3 route-reflector-client
+   neighbor 10.3.255.1 remote-as 65003
+   neighbor 10.3.255.1 update-source Loopback1
+   neighbor 10.3.255.1 description TOK-R1-LOOPBACK
+   neighbor 10.3.255.1 ebgp-multihop 2
+   network 10.2.255.1/32
+   network 10.2.0.0/16
+   redistribute connected
+!
+end
