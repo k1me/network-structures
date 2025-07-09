@@ -1,4 +1,4 @@
-name: bgp-mulitsite-network
+name: bgp-multisite-network
 topology:
   kinds:
     ceos:
