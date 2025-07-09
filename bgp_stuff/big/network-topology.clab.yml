@@ -2,7 +2,7 @@ name: bgp-mulitsite-network
 topology:
   kinds:
     ceos:
-      image: ceos:4.28.24.1M
+      image: ceos:4.28.13M # ENNEK A VERZIÓSZÁMNAK MEG KELL EGYEZNIE A DOCKERBEN TÁROLT IMAGE-VEL `DOCKER IMAGES`
     linux:
       image: ghcr.io/hellt/network-multitool
   nodes:
