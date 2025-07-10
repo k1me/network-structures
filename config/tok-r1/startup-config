@@ -1,5 +1,5 @@
-! Startup-config last modified at Wed Jul  9 14:19:33 2025 by admin
-! device: tok-r1 (cEOSLab, EOS-4.28.13.1M-41622611.428131M (engineering build))
+! Startup-config last modified at Thu Jul 10 05:12:44 2025 by admin
+! device: tok-r1 (cEOSLab, EOS-4.28.13M-40288711.42813M (engineering build))
 !
 no aaa root
 !
@@ -54,6 +54,8 @@ interface Management0
 ip routing
 ip routing vrf def
 !
+ip route 10.1.255.1/32 10.100.0.5
+ip route 10.2.255.1/32 10.100.0.10
 ip route 10.3.255.2/32 10.3.0.2
 ip route 10.3.255.3/32 10.3.1.2
 ip route vrf def 0.0.0.0/0 172.20.20.1
