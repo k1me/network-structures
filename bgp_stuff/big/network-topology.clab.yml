@@ -1,42 +1,42 @@
 name: bgp-multisite-network
 topology:
   kinds:
-    ceos:
-      image: ceos:4.28.13M # ENNEK A VERZIÓSZÁMNAK MEG KELL EGYEZNIE A DOCKERBEN TÁROLT IMAGE-VEL `DOCKER IMAGES`
+    arista_ceos:
+      image: arista_ceos:4.28.13M # ENNEK A VERZIÓSZÁMNAK MEG KELL EGYEZNIE A DOCKERBEN TÁROLT IMAGE-VEL `DOCKER IMAGES`
     linux:
       image: ghcr.io/hellt/network-multitool
   nodes:
   #Budapesti iroda
     bud-r1:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.11
     bud-r2:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.12
     bud-r3:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.13
 
   #New York-i iroda
     ny-r1:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.21
     ny-r2:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.22
     ny-r3:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.23
 
   #Tokio-i iroda
     tok-r1:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.31
     tok-r2:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.32
     tok-r3:
-      kind: ceos
+      kind: arista_ceos
       mgmt-ipv4: 172.20.20.33
 
   #Host
