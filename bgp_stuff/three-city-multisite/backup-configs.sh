@@ -2,14 +2,14 @@
 
 BASE_DIR=$(dirname "$0")
 CONFIG_DIR="$BASE_DIR/config"
-CLAB_DIR="$BASE_DIR/bgp_stuff/big/clab-bgp-multisite-network"
+CLAB_DIR="$BASE_DIR/clab-bgp-multisite-network"
 
 case "$1" in
   backup)
     echo "Backing up startup-config files..."
     mkdir -p "$CONFIG_DIR"
     find "$CLAB_DIR" -type f -path "*/flash/startup-config" | while read -r file; do
-      node_dir=$(dirname "$(dirname "$file")") # node mappa pl. bgp_stuff/big/clab-bgp-multisite-network/bud-r1
+      node_dir=$(dirname "$(dirname "$file")") # node mappa pl. clab-bgp-multisite-network/bud-r1
       node_name=$(basename "$node_dir")
       dest_dir="$CONFIG_DIR/$node_name"
       mkdir -p "$dest_dir"

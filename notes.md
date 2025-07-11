@@ -5,7 +5,8 @@
     sudo docker rmi <image_tag:verzio> # ha már nincs rá szükség
     docker image check:
     sudo docker images
-
+    
+    # jó ezt inkább mégse, mert errort dob deploy közben
 
 
 
