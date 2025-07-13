@@ -1,0 +1,27 @@
+name: ebgp-miniature-network
+topology:
+  kinds:
+    arista_ceos:
+      image: arista_ceos:4.28.13M
+    linux:
+      image: ghcr.io/hellt/network-multitool
+  nodes:
+    r1:
+      kind: arista_ceos
+      mgmt-ipv4: 172.20.20.11
+    r2:
+      kind: arista_ceos
+      mgmt-ipv4: 172.20.20.21
+
+    h1:
+      kind: linux
+      mgmt-ipv4: 172.20.20.12
+    h2:
+      kind: linux
+      mgmt-ipv4: 172.20.20.22
+
+
+  links:
+    - endpoints: ["r1:eth1", "r2:eth1"]
+    - endpoints: ["r1:eth2", "h1:eth1"]
+    - endpoints: ["r2:eth2", "h2:eth1"]
