@@ -1,0 +1,18 @@
+bgp_stuff/**/clab-*/**
+
+# topologóia fájlak mindenképp kellenek
+!bgp_stuff/**/clab-*/network-topology.yaml
+!config-backup/
+
+# clab ideiglenes fájljai
+**/clab-*/.clab-working/
+**/clab-*/.clab-topo.yaml
+
+# editor/os által generált fájlok
+*.swp
+*.swo
+*.bak
+*~
+.DS_Store
+.idea/
+.vscode/
