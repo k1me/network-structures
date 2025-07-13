@@ -1,4 +1,4 @@
-! Startup-config last modified at Thu Jul 10 04:59:41 2025 by root
+! Startup-config last modified at Thu Jul 10 19:18:08 2025 by root
 ! device: ny-r3 (cEOSLab, EOS-4.28.13M-40288711.42813M (engineering build))
 !
 no aaa root
@@ -47,7 +47,7 @@ interface Loopback1
 !
 interface Management0
    ip address 172.20.20.23/24
-   ipv6 address 3fff:172:20:20::d/64
+   ipv6 address 3fff:172:20:20::9/64
 !
 ip routing
 ip routing vrf def
