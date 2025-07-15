@@ -2,7 +2,7 @@ name: ebgp-miniature-network
 topology:
   kinds:
     arista_ceos:
-      image: arista_ceos:4.28.13M
+      image: arista_ceos:4.28.24.1M
     linux:
       image: ghcr.io/hellt/network-multitool
   nodes:
