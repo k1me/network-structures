@@ -1,7 +1,7 @@
-bgp_stuff/**/clab-*/**
+bgp/**/clab-*/**
 
 # topologóia fájlak mindenképp kellenek
-!bgp_stuff/**/clab-*/network-topology.yaml
+!bgp/**/clab-*/network-topology.yaml
 !config-backup/
 
 # clab ideiglenes fájljai
