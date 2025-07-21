@@ -10,10 +10,10 @@ if [ -z "$LAB_NAME" ]; then
   exit 1
 fi
 
-CLAB_DIR=$(find "$BASE_DIR/bgp_stuff" -type d -name "clab-$LAB_NAME" | head -n 1)
+CLAB_DIR=$(find "$BASE_DIR/bgp" -type d -name "clab-$LAB_NAME" | head -n 1)
 
 if [ -z "$CLAB_DIR" ]; then
-  echo "Lab directory for '$LAB_NAME' not found in bgp_stuff!"
+  echo "Lab directory for '$LAB_NAME' not found in bgp!"
   exit 1
 fi
 
