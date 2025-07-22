@@ -2,7 +2,7 @@ name: bgp-multisite-network
 topology:
   kinds:
     arista_ceos:
-      image: arista_ceos:4.28.24.1M
+      image: arista_ceos:4.28.13M
     linux:
       image: ghcr.io/hellt/network-multitool
   nodes:

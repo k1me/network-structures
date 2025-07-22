@@ -32,11 +32,11 @@ interface Ethernet2
 !
 interface Ethernet4
    no switchport
-   ip address 10.1.0.1/26
+   ip address 10.1.0.1/30
 !
 interface Ethernet5
    no switchport
-   ip address 10.1.1.1/26
+   ip address 10.1.0.5/30
 !
 interface Management0
    ip address 172.20.20.11/24
@@ -50,11 +50,11 @@ ipv6 route ::/0 3fff:172:20:20::1
 !
 router bgp 65001
    neighbor 10.1.0.2 remote-as 65001
-   neighbor 10.1.1.2 remote-as 65001
+   neighbor 10.1.0.6 remote-as 65001
    neighbor 10.100.0.2 remote-as 65002
    neighbor 10.100.0.6 remote-as 65003
-   network 10.1.0.0/26
-   network 10.1.1.0/26
+   network 10.1.0.0/30
+   network 10.1.0.4/30
    network 10.100.0.0/30
    network 10.100.0.4/30
 !
