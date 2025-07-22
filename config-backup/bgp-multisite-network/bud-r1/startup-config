@@ -1,9 +1,9 @@
-! Startup-config last modified at Thu Jul 10 19:18:08 2025 by root
-! device: bud-r1 (cEOSLab, EOS-4.28.13M-40288711.42813M (engineering build))
+! Startup-config last modified at Tue Jul 22 07:04:25 2025 by admin
+! device: bud-r1 (cEOSLab, EOS-4.28.13.1M-41622611.428131M (engineering build))
 !
 no aaa root
 !
-username admin privilege 15 role network-admin secret sha512 $6$eLKCxZNq3NYvk9yA$ORSpkYf9dBznLaZvSn9fNMesNYOs0COVzePnPkVOfba23a.xq7otLv2/OY2SQH.ulVSTIWVQibhKPYcYxhb2W0
+username admin privilege 15 role network-admin secret sha512 $6$Lihq0imVcNKqVnIR$iGDrgUMnzqOXZFq0/LGs3zfQnpyEIi7ic0vXmQFS3esVgXpgDOqCMBqgEWItOFBVBUjHC0kK/Q9JVdlxE7hhk.
 !
 transceiver qsfp default-mode 4x10G
 !
@@ -12,8 +12,6 @@ service routing protocols model multi-agent
 hostname bud-r1
 !
 spanning-tree mode mstp
-!
-vrf instance def
 !
 management api http-commands
    no shutdown
@@ -32,8 +30,6 @@ interface Ethernet2
    no switchport
    ip address 10.100.0.5/30
 !
-interface Ethernet3
-!
 interface Ethernet4
    no switchport
    ip address 10.1.0.1/26
@@ -42,47 +38,24 @@ interface Ethernet5
    no switchport
    ip address 10.1.1.1/26
 !
-interface Ethernet6
-!
-interface Loopback1
-   ip address 10.1.255.1/32
-!
 interface Management0
    ip address 172.20.20.11/24
-   ipv6 address 3fff:172:20:20::d/64
+   ipv6 address 3fff:172:20:20::4/64
 !
 ip routing
-ip routing vrf def
 !
-ip route 10.1.3.0/26 10.1.255.3
-ip route 10.1.255.2/32 10.1.0.2
-ip route 10.1.255.3/32 10.1.1.2
-ip route 10.2.255.1/32 10.100.0.2
-ip route 10.3.255.1/32 10.100.0.6
-ip route vrf def 0.0.0.0/0 172.20.20.1
+ip route 0.0.0.0/0 172.20.20.1
 !
 ipv6 route ::/0 3fff:172:20:20::1
 !
 router bgp 65001
-   neighbor 10.1.255.2 remote-as 65001
-   neighbor 10.1.255.2 update-source Loopback1
-   neighbor 10.1.255.2 description BUD-R2-LOOPBACK
-   neighbor 10.1.255.2 route-reflector-client
-   neighbor 10.1.255.3 remote-as 65001
-   neighbor 10.1.255.3 update-source Loopback1
-   neighbor 10.1.255.3 description BUD-R3-LOOPBACK
-   neighbor 10.1.255.3 route-reflector-client
-   neighbor 10.2.255.1 remote-as 65002
-   neighbor 10.2.255.1 update-source Loopback1
-   neighbor 10.2.255.1 description NY-R1-LOOPBACK
-   neighbor 10.2.255.1 ebgp-multihop 2
-   neighbor 10.2.255.1 route-reflector-client
-   neighbor 10.3.255.1 remote-as 65003
-   neighbor 10.3.255.1 update-source Loopback1
-   neighbor 10.3.255.1 description TOK-R1-LOOPBACK
-   neighbor 10.3.255.1 ebgp-multihop 2
-   neighbor 10.3.255.1 route-reflector-client
-   network 10.1.255.1/32
-   network 10.1.0.0/16
+   neighbor 10.1.0.2 remote-as 65001
+   neighbor 10.1.1.2 remote-as 65001
+   neighbor 10.100.0.2 remote-as 65002
+   neighbor 10.100.0.6 remote-as 65003
+   network 10.1.0.0/26
+   network 10.1.1.0/26
+   network 10.100.0.0/30
+   network 10.100.0.4/30
 !
 end
