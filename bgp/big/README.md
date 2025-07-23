@@ -138,3 +138,4 @@ A hostokból (`host-bud`, `host-ny`, `host-tok`) `ping`, `traceroute`, `curl` pa
 - [ ] Kiegészítés BGP route filteringgel
 - [ ] Kiegészítés BGP route maps használatával
 - [ ] Hibakeresési útmutató hozzáadása
+- [ ] diagramok készítése a topológiákról
