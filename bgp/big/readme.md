@@ -122,3 +122,19 @@ A hostokból (`host-bud`, `host-ny`, `host-tok`) `ping`, `traceroute`, `curl` pa
 - [BGP RFC 4271](https://tools.ietf.org/html/rfc4271)
 - [My Journey and Experience with Containerlab](https://juliopdx.com/2021/12/10/my-journey-and-experience-with-containerlab/)
 - [BGP iBGP Full Mesh Peering](https://notes.networklessons.com/bgp-ibgp-full-mesh-peering)
+
+
+## Verziókövetés
+### Jelenlegi verzió: 0.1
+- **0.1**: Alap topológia és konfiguráció létrehozása
+
+## TODO
+- [x] BGP konfigurációk finomítása
+- [x] Dokumentáció bővítése
+- [ ] Kiegésítés vrf-ekkel
+- [ ] Kiegészítés loopback interfészekkel
+- [ ] Kiegészítés BGP route reflectorral
+- [ ] Kiegészítés BGP communities használatával
+- [ ] Kiegészítés BGP route filteringgel
+- [ ] Kiegészítés BGP route maps használatával
+- [ ] Hibakeresési útmutató hozzáadása
