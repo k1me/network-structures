@@ -115,3 +115,10 @@ Ez a labor egy három helyszínből (Budapest, New York, Tokió) álló nemzetk�
 ## Tesztelés
 
 A hostokból (`host-bud`, `host-ny`, `host-tok`) `ping`, `traceroute`, `curl` parancsokkal tesztelhetők az útvonalak és a végponti elérés.
+
+## Források
+- [Containerlab dokumentáció](https://containerlab.dev/)
+- [Arista cEOS dokumentáció](https://www.arista.com/en/support)
+- [BGP RFC 4271](https://tools.ietf.org/html/rfc4271)
+- [My Journey and Experience with Containerlab](https://juliopdx.com/2021/12/10/my-journey-and-experience-with-containerlab/)
+- [BGP iBGP Full Mesh Peering](https://notes.networklessons.com/bgp-ibgp-full-mesh-peering)
