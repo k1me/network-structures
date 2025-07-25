@@ -49,7 +49,7 @@ ip routing vrf def
 !
 ip route vrf def 0.0.0.0/0 172.20.20.1
 !
-ipv6 route ::/0 3fff:172:20:20::1
+ipv6 route vrf def ::/0 3fff:172:20:20::1
 !
 router bgp 65003
    neighbor 10.3.0.1 remote-as 65003
