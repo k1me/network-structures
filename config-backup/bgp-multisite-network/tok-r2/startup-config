@@ -24,12 +24,6 @@ management api gnmi
 management api netconf
    transport ssh default
 !
-interface Ethernet1
-!
-interface Ethernet2
-!
-interface Ethernet3
-!
 interface Ethernet4
    no switchport
    ip address 10.3.0.2/30
@@ -38,7 +32,8 @@ interface Ethernet5
    no switchport
    ip address 10.3.0.9/30
 !
-interface Ethernet6
+Interface Loopback0
+   ip address 10.255.3.2/32
 !
 interface Management0
    ip address 172.20.20.32/24

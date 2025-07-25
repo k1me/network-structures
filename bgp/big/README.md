@@ -132,7 +132,7 @@ A hostokból (`host-bud`, `host-ny`, `host-tok`) `ping`, `traceroute`, `curl` pa
 - [x] BGP konfigurációk finomítása
 - [x] Dokumentáció bővítése
 - [x] Kiegésítés vrf-ekkel
-- [ ] Kiegészítés loopback interfészekkel
+- [x] Kiegészítés loopback interfészekkel
 - [ ] Kiegészítés router-id-kkal (loopback IP-k használatával)
 - [ ] Kiegészítés BGP route reflectorral
 - [ ] Kiegészítés BGP communities használatával
