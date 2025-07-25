@@ -39,10 +39,8 @@ Ez a labor egy három helyszínből (Budapest, New York, Tokió) álló nemzetk�
 
 ---
 
-### Példák Budapest irodából
+### Lokális router kapcsolatok
 
-#### Lokális router kapcsolatok
----
 #### Budapest
 
 | Kapcsolat         | Hálózat      | Eszköz   | IP           |
@@ -84,8 +82,9 @@ Ez a labor egy három helyszínből (Budapest, New York, Tokió) álló nemzetk�
 | tok-r3 ↔ host-tok | 10.3.0.12/30 | tok-r3   | 10.3.0.13    |
 |                   |              | host-tok | 10.3.0.14    |
 
+---
 
-### Példák WAN linkekre (eBGP)
+### WAN 
 
 | Kapcsolat        | Hálózat       | Eszköz     | IP           |
 |------------------|---------------|------------|--------------|
@@ -97,6 +96,33 @@ Ez a labor egy három helyszínből (Budapest, New York, Tokió) álló nemzetk�
 |                  |               | tok-r2     | 10.100.0.10  |
 
 ---
+
+### Loopback
+
+#### Budapest
+| Eszköz   | IP           |
+|----------|--------------|
+| bud-r1   | 10.255.1.1   |
+| bud-r2   | 10.255.1.2   |
+| bud-r3   | 10.255.1.3   |
+
+
+#### New York
+
+| Eszköz   | IP           |
+|----------|--------------|
+| ny-r1    | 10.255.2.1   |
+| ny-r2    | 10.255.2.2   |
+| ny-r3    | 10.255.2.3   |
+
+
+#### Tokió
+
+| Eszköz   | IP           |
+|----------|--------------|
+| tok-r1   | 10.255.3.1   |
+| tok-r2   | 10.255.3.2   |
+| tok-r3   | 10.255.3.3   |
 
 
 ## Host konfiguráció
