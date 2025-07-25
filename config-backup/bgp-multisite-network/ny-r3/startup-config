@@ -49,6 +49,7 @@ ip route vrf def 0.0.0.0/0 172.20.20.1
 ipv6 route vrf def ::/0 3fff:172:20:20::1
 !
 router bgp 65002
+   router-id 10.255.2.3
    neighbor 10.2.0.5 remote-as 65002
    neighbor 10.2.0.9 remote-as 65002
    network 10.2.0.4/30
