@@ -43,7 +43,7 @@ sudo docker rm -f $(sudo docker ps -aq)
 ## Clab hostok ip-konfigurációja:
 ``` bash
 ifconfig <eth_port> <ip_address> netmask <netmask> up
-route add default gw <gateway_ip> 
+route add default gw <gateway_ip>
 ```
 
 ## Backup script használata
@@ -85,22 +85,25 @@ sudo docker images
 
 ```bash
 .
-├── notes.md
 ├── bgp/
     ├── big/                                # "bonyolultabb" topológiák
         ├── clab-bgp-multisite-network      # feladat directory
             ├── ...
             ├── network-topology.clab.yml   # feladat topológiája
-            ├── readme.md                   # dokumentáció 
+            ├── README.md                   # dokumentáció 
     ├── small/                              # egyszerűbb topológiák
-        ├── ...
-    ├── ...
+        └── ...
+    └── ...
 ├── configs-backup/                         # backup directory
-│   ├──bgp-multisite-network
-│       ├── bud-r1
-│       ├── bud-r2
-│       ├── ...
+    ├──bgp-multisite-network
+       ├── bud-r1
+       ├── bud-r2
+       └── ...
+    └── ...
 ├── config-backup.sh                        # backup/restore script
-└── diagrams/                               # még nincs ilyen, de lesz kiegészítés
-    └── topology.png
+├── diagrams/                               # topológiákhoz tartozó diagramok
+    ├── bgp
+        └── topology.png
+    └── ...
+└── README.md                              # jegyzetek, információk
 ```
