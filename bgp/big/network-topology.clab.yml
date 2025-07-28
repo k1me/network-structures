@@ -6,7 +6,7 @@ topology:
     linux:
       image: ghcr.io/hellt/network-multitool
   nodes:
-  #Budapesti iroda
+    #Budapesti iroda
     bud-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.20.11
@@ -17,7 +17,7 @@ topology:
       kind: arista_ceos
       mgmt-ipv4: 172.20.20.13
 
-  #New York-i iroda
+    #New York-i iroda
     ny-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.20.21
@@ -28,7 +28,7 @@ topology:
       kind: arista_ceos
       mgmt-ipv4: 172.20.20.23
 
-  #Tokio-i iroda
+    #Tokio-i iroda
     tok-r1:
       kind: arista_ceos
       mgmt-ipv4: 172.20.20.31
@@ -39,7 +39,7 @@ topology:
       kind: arista_ceos
       mgmt-ipv4: 172.20.20.33
 
-  #Host
+    #Host
     host-bud:
       kind: linux
       mgmt-ipv4: 172.20.20.41
@@ -51,7 +51,6 @@ topology:
       mgmt-ipv4: 172.20.20.43
 
   links:
-    
     #Budapesti iroda  kapcsolatai
     - endpoints: ["bud-r1:eth4", "bud-r2:eth4"]
     - endpoints: ["bud-r1:eth5", "bud-r3:eth4"]
@@ -68,9 +67,9 @@ topology:
     - endpoints: ["tok-r2:eth5", "tok-r3:eth5"]
 
     #Host - Router kapcsolatok
-    - endpoints: ["host-bud:eth4","bud-r3:eth6"]
-    - endpoints: ["host-ny:eth4","ny-r3:eth6"]
-    - endpoints: ["host-tok:eth4","tok-r3:eth6"]
+    - endpoints: ["host-bud:eth4", "bud-r3:eth6"]
+    - endpoints: ["host-ny:eth4", "ny-r3:eth6"]
+    - endpoints: ["host-tok:eth4", "tok-r3:eth6"]
 
     #WAN kapcsolatok
     - endpoints: ["bud-r1:eth1", "ny-r1:eth1"]
