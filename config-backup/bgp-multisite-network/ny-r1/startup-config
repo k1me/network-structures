@@ -46,6 +46,31 @@ interface Management0
    ipv6 address 3fff:172:20:20::a/64
 !
 ip routing
+!
+ip prefix-list NY-LOCAL seq 10 permit 10.2.0.0/30
+ip prefix-list NY-LOCAL seq 20 permit 10.2.0.4/30
+ip prefix-list NY-WAN seq 10 permit 10.100.0.8/30
+ip prefix-list NY-WAN seq 20 permit 10.100.0.0/30
+!
+ip community-list BUD-ACCEPT permit 65001:100
+ip community-list TOK-ACCEPT permit 65003:300
+!
+route-map NY-EXPORT permit 10
+ match ip address prefix-list NY-LOCAL
+ set community 65002:200 additive
+
+route-map NY-EXPORT permit 20
+ match ip address prefix-list NY-WAN
+ set community 65002:210 additive
+!
+route-map NY-IMPORT permit 10
+ match community BUD-ACCEPT
+ set local-preference 200
+!
+route-map NY-IMPORT permit 20
+ match community TOK-ACCEPT
+ set local-preference 150
+!
 ip routing vrf def
 !
 ip route vrf def 0.0.0.0/0 172.20.20.1
@@ -55,9 +80,19 @@ ipv6 route vrf def ::/0 3fff:172:20:20::1
 router bgp 65002
    router-id 10.255.2.1
    neighbor 10.2.0.2 remote-as 65002
+   neighbor 10.2.0.2 route-reflector-client
+   neighbor 10.2.0.2 route-map NY-IMPORT in
+   neighbor 10.2.0.2 route-map NY-EXPORT out
    neighbor 10.2.0.6 remote-as 65002
+   neighbor 10.2.0.6 route-reflector-client
+   neighbor 10.2.0.6 route-map NY-IMPORT in
+   neighbor 10.2.0.6 route-map NY-EXPORT out
    neighbor 10.100.0.1 remote-as 65001
+   neighbor 10.100.0.1 route-map NY-IMPORT in
+   neighbor 10.100.0.1 route-map NY-EXPORT out
    neighbor 10.100.0.10 remote-as 65003
+   neighbor 10.100.0.10 route-map NY-IMPORT in
+   neighbor 10.100.0.10 route-map NY-EXPORT out
    network 10.2.0.0/30
    network 10.2.0.4/30
    network 10.100.0.0/30

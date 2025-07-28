@@ -46,6 +46,31 @@ interface Management0
    ipv6 address 3fff:172:20:20::4/64
 !
 ip routing
+!
+ip prefix-list BUD-LOCAL seq 5 permit 10.1.0.0/30
+ip prefix-list BUD-LOCAL seq 10 permit 10.1.0.4/30
+ip prefix-list BUD-WAN seq 5 permit 10.100.0.0/30
+ip prefix-list BUD-WAN seq 10 permit 10.100.0.4/30
+!
+ip community-list NY-ACCEPT permit 65002:200
+ip community-list TOK-ACCEPT permit 65003:300
+!
+route-map BUD-EXPORT permit 10
+   match ip address prefix-list BUD-LOCAL
+   set community 65001:100 additive
+!
+route-map BUD-EXPORT permit 20
+   match ip address prefix-list BUD-WAN
+   set community 65001:110 additive
+!
+route-map BUD-IMPORT permit 10
+   match community NY-ACCEPT
+   set local-preference 200
+!
+route-map BUD-IMPORT permit 20
+   match community TOK-ACCEPT
+   set local-preference 150
+!
 ip routing vrf def
 !
 ip route vrf def 0.0.0.0/0 172.20.20.1
@@ -55,11 +80,19 @@ ipv6 route vrf def ::/0 3fff:172:20:20::1
 router bgp 65001
    router-id 10.255.1.1
    neighbor 10.1.0.2 remote-as 65001
-   neighbor 10.1.0.6 remote-as 65001
    neighbor 10.1.0.2 route-reflector-client
+   neighbor 10.1.0.2 route-map BUD-IMPORT in
+   neighbor 10.1.0.2 route-map BUD-EXPORT out
+   neighbor 10.1.0.6 remote-as 65001
    neighbor 10.1.0.6 route-reflector-client
+   neighbor 10.1.0.6 route-map BUD-IMPORT in
+   neighbor 10.1.0.6 route-map BUD-EXPORT out
    neighbor 10.100.0.2 remote-as 65002
-   neighbor 10.100.0.6 remote-as 65003
+   neighbor 10.100.0.2 route-map BUD-IMPORT in
+   neighbor 10.100.0.2 route-map BUD-EXPORT out
+   neighbor 10.1.0.6 remote-as 65003
+   neighbor 10.1.0.6 route-map BUD-IMPORT in
+   neighbor 10.1.0.6 route-map BUD-EXPORT out
    network 10.1.0.0/30
    network 10.1.0.4/30
    network 10.100.0.0/30
