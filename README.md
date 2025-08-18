@@ -86,24 +86,24 @@ sudo docker images
 ```bash
 .
 ├── bgp/
-    ├── big/                                # "bonyolultabb" topológiák
-        ├── clab-bgp-multisite-network      # feladat directory
-            ├── ...
-            ├── network-topology.clab.yml   # feladat topológiája
-            ├── README.md                   # dokumentáció 
-    ├── small/                              # egyszerűbb topológiák
-        └── ...
-    └── ...
-├── configs-backup/                         # backup directory
-    ├──bgp-multisite-network
-       ├── bud-r1
-       ├── bud-r2
-       └── ...
-    └── ...
-├── config-backup.sh                        # backup/restore script
-├── diagrams/                               # topológiákhoz tartozó diagramok
-    ├── bgp
-        └── topology.png
-    └── ...
-└── README.md                              # jegyzetek, információk
+│    ├── big/                                # "bonyolultabb" topologiak
+│    │   ├── clab-bgp-multisite-network      # feladat directory
+│    │   ├── ...
+│    │   ├── network-topology.clab.yml       # feladat topologiaja
+│    │   └── README.md                       # dokumentacio
+│    ├── small/                              # egyszerubb topologiak
+│    │   └── ...
+│    └── ...
+├── configs-backup/                          # backup directory
+│    ├── bgp-multisite-network
+│    │   ├── bud-r1
+│    │   ├── bud-r2
+│    │   └── ...
+│    └── ...
+├── config-backup.sh                         # backup/restore script
+├── diagrams/                                # topologiakhoz tartozo diagramok
+│    ├── bgp
+│    │   └── topology.png
+│    └── ...
+└── README.md                                # jegyzetek, informaciok
 ```
